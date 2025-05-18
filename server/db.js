@@ -1,14 +1,15 @@
-require("dotenv").config(); //required when using .env file
-
-const Pool = require("pg").Pool;
+const { Pool } = require("pg");
+require('dotenv').config();
 
 const pool = new Pool({
-    user: process.env.PGUSER,
-    password: process.env.PGPASSWORD,
-    host: process.env.PGHOST,
-    port: process.env.PGPORT,
-    database: process.env.PGDATABASE
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  host: process.env.PGHOST,
+  port: process.env.PGPORT,
+  database: process.env.PGDATABASE,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
-
 
 module.exports = pool;
