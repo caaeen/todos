@@ -6,7 +6,7 @@ const Card = ({ id, data, onChange }) => {
 
     const deletes = async () => {
         try {
-            await fetch(`http://localhost:5000/delete/${id}`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/delete/${id}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" }
             });
@@ -24,7 +24,7 @@ const Card = ({ id, data, onChange }) => {
             setEditMode(false);
             try {
                 const body = { todo: text };
-                await fetch(`http://localhost:5000/update/${id}`, {
+                await fetch(`${import.meta.env.VITE_API_URL}/update/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(body)

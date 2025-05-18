@@ -12,7 +12,7 @@ const Todo = () => {
         if(todo.length > 0){
             try {
                 const body = { todo };
-                const res = await fetch("http://localhost:5000/todos",{
+                const res = await fetch(`${import.meta.env.VITE_API_URL}/todos`,{
                     method: "POST",
                     headers:{ "Content-Type": "application/json" },
                     body: JSON.stringify(body)
@@ -31,7 +31,7 @@ const Todo = () => {
 
     const getTodo = async () =>{
         try {
-            const res = await fetch("http://localhost:5000/show");
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/show`);
             const data = await res.json();
             setShowTodo(data);
             console.log(data);
